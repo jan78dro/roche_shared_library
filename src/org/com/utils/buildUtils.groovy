@@ -1,4 +1,4 @@
-package org.com.utils
+package src/org/com/utils
 
 /**
  * Function to build with maven
