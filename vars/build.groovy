@@ -1,8 +1,9 @@
 #!usr/bin/env groovy
+
 import org.com.utils.buildUtils
 
 def call() {
-  def buil_utils = new buildUtils()
+  def build_utils = new buildUtils()
   
   pipeline {
       agent {
@@ -14,13 +15,13 @@ def call() {
                   script {
                       image = build_utils.get_image()
                       version = build_utils.get_version()
-                      buil_utils.maven('-B -DskipTests clean package')
+                      build_utils.maven('-B -DskipTests clean package')
                   }
               }
           }
           stage('Test') {
               steps {
-                buil_utils.maven('test')
+                build_utils.maven('test')
               }
               post {
                   always {
