@@ -1,4 +1,4 @@
-package src/org/com/utils
+package org/com/utils
 
 def maven(String method){
 	sh("mvn " + method )
