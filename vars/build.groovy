@@ -1,7 +1,5 @@
 #!usr/bin/env groovy
-import es.org.com.buildUtils
-
-
+import org.com.utils.buildUtils
 
 def call() {
   def buil_utils = new buildUtils()
