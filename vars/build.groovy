@@ -14,13 +14,13 @@ def call() {
                   script {
                       image = build_utils.get_image()
                       version = build_utils.get_version()
-                      buil_utils.maven_build('mvn -B -DskipTests clean package')
+                      buil_utils.maven('-B -DskipTests clean package')
                   }
               }
           }
           stage('Test') {
               steps {
-                  sh 'mvn test'
+                buil_utils.maven('test')
               }
               post {
                   always {
