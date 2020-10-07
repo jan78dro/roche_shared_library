@@ -21,7 +21,9 @@ def call() {
           }
           stage('Test') {
               steps {
-                build_utils.maven('test')
+                script{
+                  build_utils.maven('test')
+                }
               }
               post {
                   always {
