@@ -1,30 +1,33 @@
-def call() {
+#!usr/bin/env groovy
+import org.com.utils.buildUtils
 
-  timestamps {
-    pipeline {
-      options {
-        timeout(time: 10, unit: 'DAYS')
+def call() {
+  def buil_utils = new buildUtils()
+  
+  pipeline {
+      agent {
+          label 'agent_maven'
       }
-      agent {none}
       stages {
-        
-        stage('1 - say hello') {
-          steps {
-            script {
-              echo("Hi, how are you today")
-            }
+          stage('Build') {
+              steps {
+                  script {
+                      image = build_utils.get_image()
+                      version = build_utils.get_version()
+                      buil_utils.maven('-B -DskipTests clean package')
+                  }
+              }
           }
-        }
-        
-        stage('2 - say goodbay') {
-          steps {
-            script {
-              echo("good bye, I hope you enjoy")
-            }
+          stage('Test') {
+              steps {
+                buil_utils.maven('test')
+              }
+              post {
+                  always {
+                      junit 'target/surefire-reports/*.xml'
+                  }
+              }
           }
-        }
-        
       }
-    }
   }
 }
