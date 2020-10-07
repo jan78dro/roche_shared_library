@@ -10,6 +10,6 @@ def get_image(){
 }
 
 def get_version(){
-	version = eadMavenPom().getVersion()
+	version = readMavenPom().getVersion()
 	return version	
 }
