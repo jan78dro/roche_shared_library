@@ -1,10 +1,15 @@
 package src/org/com/utils
 
-/**
- * Function to build with maven
- * @param method  --> clean, install, test, etc
- */
-
 def buildMaven(String method){
-		sh("mvn " + method )
+	sh("mvn " + method )
+}
+
+def get_image(){
+	image = readMavenPom().getArtifactId()
+	return image	
+}
+
+def get_version(){
+	version = eadMavenPom().getVersion()
+	return version	
 }
