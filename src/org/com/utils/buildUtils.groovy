@@ -1,6 +1,6 @@
 package src/org/com/utils
 
-def buildMaven(String method){
+def maven(String method){
 	sh("mvn " + method )
 }
 
