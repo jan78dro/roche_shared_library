@@ -11,7 +11,7 @@ def call() {
       stage('validate security code') {
         steps {
           script {
-            result_vaidation = checkUtils.security()
+            result_validation = checkUtils.security()
             if(result_validation == true){
               currentBuild.result = 'SUCCESS'
             }else if (result_validation == false){
