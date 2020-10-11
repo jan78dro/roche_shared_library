@@ -14,15 +14,14 @@ def call() {
             image = build_utils.get_image()
             version = build_utils.get_version()
             result_vaidation = check_Utils.security()
+            if(result_validation == true){
+              currentBuild.result = 'SUCCESS'
+            }else if (result_validation == false){
+              currentBuild.result = 'FAILURE'
+            }
           }
         }
       }
     }
-    post
-  
-  
-  
-  
-  
   }
 }
