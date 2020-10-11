@@ -1,7 +1,7 @@
-import org.com.utils.checkdUtils
+import org.com.utils.checkUtils
 
 def call() {
-  def check_Utils = new checkUtils()
+  def checkUtils = new checkUtils()
   
   pipeline {
     agent {
@@ -11,9 +11,7 @@ def call() {
       stage('validate security code') {
         steps {
           script {
-            image = build_utils.get_image()
-            version = build_utils.get_version()
-            result_vaidation = check_Utils.security()
+            result_vaidation = checkUtils.security()
             if(result_validation == true){
               currentBuild.result = 'SUCCESS'
             }else if (result_validation == false){
