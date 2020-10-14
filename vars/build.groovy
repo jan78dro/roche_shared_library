@@ -16,7 +16,7 @@ def call() {
                       image = build_utils.get_image()
                       version = build_utils.get_version()
                       build_utils.maven('-B -DskipTests clean package')
-                      echo "HELLO FROM THE OTHER SIDE"
+                      echo "HELLO FROM THE OTHER SIDE - and runing on trainind branch"
                   }
               }
           }
