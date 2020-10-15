@@ -13,7 +13,7 @@ def call() {
           script {
             result_validation = checkUtils.security()
             if(result_validation == true){
-              currentBuild.result = 'SUCCESS'
+              currentBuild.result = 'FAILURE'
             }else if (result_validation == false){
               currentBuild.result = 'FAILURE'
             }
