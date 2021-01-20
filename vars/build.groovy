@@ -3,35 +3,30 @@
 import org.com.utils.buildUtils
 
 def call() {
-  def build_utils = new buildUtils()
-  
-  pipeline {
-      agent {
-          label 'agent_maven'
-      }
-      stages {
-          stage('Build') {
-              steps {
-                  script {
-                      image = build_utils.get_image()
-                      version = build_utils.get_version()
-                      build_utils.maven('-B -DskipTests clean package')
-                      echo "HELLO FROM THE OTHER SIDE"
-                  }
-              }
-          }
-          stage('Test') {
-              steps {
-                script{
-                  build_utils.maven('test')
+    def build_utils = new buildUtils()
+
+    pipeline {
+        agent any
+        stages {
+            stage('Build') {
+                steps {
+                    script {
+                        echo "HELLO FROM THE OTHER SIDE"
+                    }
                 }
-              }
-              post {
-                  always {
-                      junit 'target/surefire-reports/*.xml'
+            }
+            stage('Test') {
+                steps {
+                    script{
+                        echo "testing"
                   }
-              }
-          }
-      }
-  }
+                }
+                post {
+                    always {
+                        echo "post from the pipeline"
+                    }
+                }
+            }
+        }
+    }
 }
